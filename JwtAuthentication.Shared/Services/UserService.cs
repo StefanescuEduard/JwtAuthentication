@@ -1,9 +1,9 @@
-﻿using JwtAuthentication.SymmetricEncryption.Exceptions;
-using JwtAuthentication.SymmetricEncryption.Models;
+﻿using JwtAuthentication.Shared.Exceptions;
+using JwtAuthentication.Shared.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JwtAuthentication.SymmetricEncryption.Services
+namespace JwtAuthentication.Shared.Services
 {
     public class UserService
     {

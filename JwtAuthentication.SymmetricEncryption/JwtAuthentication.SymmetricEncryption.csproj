@@ -8,4 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JwtAuthentication.Shared\JwtAuthentication.Shared.csproj" />
+  </ItemGroup>
 </Project>

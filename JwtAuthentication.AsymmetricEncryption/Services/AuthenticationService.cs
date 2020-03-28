@@ -1,7 +1,7 @@
 ﻿using JwtAuthentication.Shared.Models;
 using JwtAuthentication.Shared.Services;
 
-namespace JwtAuthentication.SymmetricEncryption.Services
+namespace JwtAuthentication.AsymmetricEncryption.Services
 {
     public class AuthenticationService
     {

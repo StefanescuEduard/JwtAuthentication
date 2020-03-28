@@ -1,4 +1,4 @@
-﻿namespace JwtAuthentication.SymmetricEncryption.Models
+﻿namespace JwtAuthentication.Shared.Models
 {
     public class UserCredentials
     {

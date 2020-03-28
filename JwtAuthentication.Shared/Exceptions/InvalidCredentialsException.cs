@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JwtAuthentication.SymmetricEncryption.Exceptions
+namespace JwtAuthentication.Shared.Exceptions
 {
     public class InvalidCredentialsException : Exception
     {

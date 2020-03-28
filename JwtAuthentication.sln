@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthentication.SymmetricEncryption", "JwtAuthentication.SymmetricEncryption\JwtAuthentication.SymmetricEncryption.csproj", "{9B6F472C-85B9-43D7-AC6F-BA65054DA11E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.AsymmetricEncryption", "JwtAuthentication.AsymmetricEncryption\JwtAuthentication.AsymmetricEncryption.csproj", "{52816FAE-EB16-45B7-AEAE-B89640476BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Shared", "JwtAuthentication.Shared\JwtAuthentication.Shared.csproj", "{C52671FC-00E1-41CA-9E15-D4C75CB2F8CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9B6F472C-85B9-43D7-AC6F-BA65054DA11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B6F472C-85B9-43D7-AC6F-BA65054DA11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B6F472C-85B9-43D7-AC6F-BA65054DA11E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52816FAE-EB16-45B7-AEAE-B89640476BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52816FAE-EB16-45B7-AEAE-B89640476BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52816FAE-EB16-45B7-AEAE-B89640476BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52816FAE-EB16-45B7-AEAE-B89640476BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52671FC-00E1-41CA-9E15-D4C75CB2F8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52671FC-00E1-41CA-9E15-D4C75CB2F8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52671FC-00E1-41CA-9E15-D4C75CB2F8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52671FC-00E1-41CA-9E15-D4C75CB2F8CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

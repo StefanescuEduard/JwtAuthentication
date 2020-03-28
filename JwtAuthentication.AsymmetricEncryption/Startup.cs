@@ -1,41 +1,33 @@
+using JwtAuthentication.AsymmetricEncryption.Extensions;
+using JwtAuthentication.AsymmetricEncryption.Services;
 using JwtAuthentication.Shared.Services;
-using JwtAuthentication.SymmetricEncryption.Extensions;
-using JwtAuthentication.SymmetricEncryption.Models;
-using JwtAuthentication.SymmetricEncryption.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Text;
 
-namespace JwtAuthentication.SymmetricEncryption
+namespace JwtAuthentication.AsymmetricEncryption
 {
     public class Startup
     {
-        private readonly IConfiguration configuration;
-
         public Startup(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            Configuration = configuration;
         }
 
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            IConfigurationSection settingsSection = configuration.GetSection("AppSettings");
-            AppSettings settings = settingsSection.Get<AppSettings>();
-            byte[] signingKey = Encoding.UTF8.GetBytes(settings.EncryptionKey);
+            services.AddAsymmetricAuthentication();
 
-            services.AddAuthentication(signingKey);
-
-            services.Configure<AppSettings>(settingsSection);
             services.AddTransient<AuthenticationService>();
-            services.AddTransient<UserService>();
             services.AddTransient<TokenService>();
+            services.AddTransient<UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

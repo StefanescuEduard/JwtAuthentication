@@ -1,9 +1,9 @@
-﻿using JwtAuthentication.Shared.Exceptions;
+﻿using JwtAuthentication.AsymmetricEncryption.Services;
+using JwtAuthentication.Shared.Exceptions;
 using JwtAuthentication.Shared.Models;
-using JwtAuthentication.SymmetricEncryption.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JwtAuthentication.SymmetricEncryption.Controllers
+namespace JwtAuthentication.AsymmetricEncryption.Controllers
 {
     [Route("identity/[controller]")]
     public class AuthenticationController : ControllerBase
