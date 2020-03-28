@@ -20,9 +20,9 @@ namespace JwtAuthentication.SymmetricEncryption.Extensions
                     jwtOptions.SaveToken = true;
                     jwtOptions.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuerSigningKey = true,
                         ValidateAudience = false,
                         ValidateIssuer = false,
+                        ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(signingKey),
                         ValidateLifetime = true,
                         LifetimeValidator = LifetimeValidator
@@ -32,10 +32,10 @@ namespace JwtAuthentication.SymmetricEncryption.Extensions
             return services;
         }
 
-        private static bool LifetimeValidator(DateTime? notbefore,
+        private static bool LifetimeValidator(DateTime? notBefore,
             DateTime? expires,
-            SecurityToken securitytoken,
-            TokenValidationParameters validationparameters)
+            SecurityToken securityToken,
+            TokenValidationParameters validationParameters)
         {
             return expires != null && expires > DateTime.Now;
         }
