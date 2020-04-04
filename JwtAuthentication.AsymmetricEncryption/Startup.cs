@@ -1,11 +1,13 @@
 using JwtAuthentication.AsymmetricEncryption.Extensions;
 using JwtAuthentication.AsymmetricEncryption.Services;
+using JwtAuthentication.Shared;
 using JwtAuthentication.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace JwtAuthentication.AsymmetricEncryption
 {
@@ -21,13 +23,18 @@ namespace JwtAuthentication.AsymmetricEncryption
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling =
+                        ReferenceLoopHandling.Ignore;
+                });
 
             services.AddAsymmetricAuthentication();
 
             services.AddTransient<AuthenticationService>();
-            services.AddTransient<TokenService>();
             services.AddTransient<UserService>();
+            services.AddTransient<UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +50,7 @@ namespace JwtAuthentication.AsymmetricEncryption
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

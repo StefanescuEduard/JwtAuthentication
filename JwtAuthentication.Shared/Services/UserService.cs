@@ -1,32 +1,22 @@
 ﻿using JwtAuthentication.Shared.Exceptions;
 using JwtAuthentication.Shared.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace JwtAuthentication.Shared.Services
 {
     public class UserService
     {
-        private readonly IEnumerable<UserCredentials> users;
+        private readonly UserRepository userRepository;
 
-        public UserService()
+        public UserService(UserRepository userRepository)
         {
-            users = new List<UserCredentials>
-            {
-                new UserCredentials
-                {
-                    Username = "john.doe",
-                    Password = "john.password"
-                }
-            };
+            this.userRepository = userRepository;
         }
 
         public void ValidateCredentials(UserCredentials userCredentials)
         {
-            bool isValid =
-                users.Any(u =>
-                    u.Username == userCredentials.Username &&
-                    u.Password == userCredentials.Password);
+            User user = userRepository.GetUser(userCredentials.Username);
+            bool isValid = user.Username == userCredentials.Username &&
+                           user.Password == userCredentials.Password;
 
             if (!isValid)
             {
