@@ -34,6 +34,7 @@ namespace JwtAuthentication.AsymmetricEncryption
 
             services.AddTransient<AuthenticationService>();
             services.AddTransient<UserService>();
+            services.AddTransient<TokenService>();
             services.AddTransient<UserRepository>();
         }
 

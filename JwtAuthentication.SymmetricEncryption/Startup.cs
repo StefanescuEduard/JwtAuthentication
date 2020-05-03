@@ -1,3 +1,4 @@
+using JwtAuthentication.Shared;
 using JwtAuthentication.Shared.Services;
 using JwtAuthentication.SymmetricEncryption.Extensions;
 using JwtAuthentication.SymmetricEncryption.Models;
@@ -36,6 +37,7 @@ namespace JwtAuthentication.SymmetricEncryption
             services.AddTransient<AuthenticationService>();
             services.AddTransient<UserService>();
             services.AddTransient<TokenService>();
+            services.AddTransient<UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

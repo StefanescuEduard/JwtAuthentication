@@ -1,4 +1,5 @@
 ﻿using JwtAuthentication.AsymmetricEncryption.Certificates;
+using JwtAuthentication.Shared;
 using JwtAuthentication.Shared.Models;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,18 +10,20 @@ namespace JwtAuthentication.AsymmetricEncryption.Services
 {
     public class TokenService
     {
-        private readonly User user;
+        private readonly UserRepository userRepository;
         private readonly SigningAudienceCertificate signingAudienceCertificate;
 
-        public TokenService(User user)
+        public TokenService(UserRepository userRepository)
         {
-            this.user = user;
+            this.userRepository = userRepository;
             signingAudienceCertificate = new SigningAudienceCertificate();
         }
 
-        public string GetToken()
+        public string GetToken(string username)
         {
-            SecurityTokenDescriptor tokenDescriptor = GetTokenDescriptor();
+            User user = userRepository.GetUser(username);
+            SecurityTokenDescriptor tokenDescriptor = GetTokenDescriptor(user);
+
             var tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken securityToken = tokenHandler.CreateToken(tokenDescriptor);
             string token = tokenHandler.WriteToken(securityToken);
@@ -28,7 +31,7 @@ namespace JwtAuthentication.AsymmetricEncryption.Services
             return token;
         }
 
-        private SecurityTokenDescriptor GetTokenDescriptor()
+        private SecurityTokenDescriptor GetTokenDescriptor(User user)
         {
             const int expiringDays = 7;
 

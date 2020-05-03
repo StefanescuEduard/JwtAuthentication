@@ -15,13 +15,18 @@ namespace JwtAuthentication.Shared.Services
         public void ValidateCredentials(UserCredentials userCredentials)
         {
             User user = userRepository.GetUser(userCredentials.Username);
-            bool isValid = user.Username == userCredentials.Username &&
-                           user.Password == userCredentials.Password;
+            bool isValid = user != null && AreValidCredentials(userCredentials, user);
 
             if (!isValid)
             {
                 throw new InvalidCredentialsException();
             }
+        }
+
+        private static bool AreValidCredentials(UserCredentials userCredentials, User user)
+        {
+            return user.Username == userCredentials.Username &&
+                   user.Password == userCredentials.Password;
         }
     }
 }

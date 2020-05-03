@@ -29,7 +29,7 @@ namespace JwtAuthentication.Shared
 
         public User GetUser(string username)
         {
-            return users.Single(u => u.Username.Equals(username));
+            return users.SingleOrDefault(u => u.Username.Equals(username));
         }
     }
 }
