@@ -37,7 +37,7 @@ namespace JwtAuthentication.SymmetricEncryption.Extensions
             SecurityToken securityToken,
             TokenValidationParameters validationParameters)
         {
-            return expires != null && expires > DateTime.Now;
+            return expires != null && expires > DateTime.UtcNow;
         }
     }
 }
